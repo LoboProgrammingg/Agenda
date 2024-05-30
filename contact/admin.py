@@ -1,11 +1,10 @@
 from django.contrib import admin
+from contact import models
 
-from contact.models import Contact
 
-
-@admin.register(Contact)
+@admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = 'id', 'first_name', 'last_name', 'phone', 'email'
+    list_display = 'id', 'first_name', 'last_name','email'
     ordering = 'id',
     list_filter = 'created_date',
     search_fields = 'id','first_name','last_name',
@@ -13,3 +12,9 @@ class ContactAdmin(admin.ModelAdmin):
     list_max_show_all = 200
     # list_editable = 'first_name', 'last_name'
     list_display_links = 'id','first_name'
+
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = 'name',
+    ordering = '-id',
