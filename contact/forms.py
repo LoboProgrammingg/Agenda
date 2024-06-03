@@ -17,15 +17,12 @@ class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)     
 
-        # self.fields['first_name'].widget.attrs.update({
-        #     'class': 'classe-a classe-b',
-        #     'placeholder': 'seu nome',
-        # })   
 
     class Meta:
         model = models.Contact
         fields = (
             'first_name', 'last_name', 'phone',
+            'email', 'description', 'category',
         )
 
     def clean(self):
