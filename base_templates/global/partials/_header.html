@@ -7,15 +7,25 @@
 
     <nav class="menu">
       <ul class="menu-list">
+        {% if user.is_authenticated %}
+          <li class="menu-item">
+            <a href="{% url "contact:create" %}" class="menu-link">Create</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url "contact:user_update" %}" class="menu-link">Perfil</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url "contact:logout" %}" class="menu-link">Logout</a>
+          </li>
+        {% else %}
+          <li class="menu-item">
+            <a href="{% url "contact:login" %}" class="menu-link">Login</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url "contact:register" %}" class="menu-link">Registro</a>
+          </li>
+        {% endif %}
         <li class="menu-item">
-          <a href="{% url "contact:create" %}" class="menu-link">
-            Create
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="" class="menu-link">
-            Link 2
-          </a>
         </li>
       </ul>
     </nav>
