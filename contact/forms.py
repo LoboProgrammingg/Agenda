@@ -3,6 +3,14 @@ from django.core.exceptions import ValidationError
 from . import models
 
 class ContactForm(forms.ModelForm):
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+            }
+        )
+    )
+
     first_name = forms.CharField(
         widget= forms.TextInput(
             attrs={
@@ -23,6 +31,7 @@ class ContactForm(forms.ModelForm):
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture',
         )
 
     def clean(self):
